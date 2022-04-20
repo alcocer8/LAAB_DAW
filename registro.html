@@ -29,7 +29,7 @@
     </header>
 
     <main class="contenedor">
-        <h2>Ingresar</h2>
+        <h2>Registro</h2>
 
         <div class="form">
             <form action="" method="post" class="login">
@@ -42,6 +42,21 @@
                     </svg>
     
                     <div class="campo">
+                        <label for="Nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre">
+                    </div>
+
+                    <div class="campo">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" id="apellido" name="apellido">
+                    </div>
+
+                    <div class="campo">
+                        <label for="edad">Edad</label>
+                        <input type="number" min="18" id="edad" name="edad">
+                    </div>
+
+                    <div class="campo">
                         <label for="usuario">Usuario</label>
                         <input type="text" id="usuario" name="usuario">
                     </div>
@@ -50,9 +65,8 @@
                         <label for="usuario">Contraseña</label>
                         <input type="password" id="pass" name="pass">
                     </div>
-                    <a href="registro.html" class="registro">¿Eres Nuevo Usuario? Registrate</a>
     
-                    <input type="submit" value="Ingresar" name="login" class="btn">
+                    <input type="submit" value="Registrar" name="login" class="btn">
                 </div>
     
             </form>

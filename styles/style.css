@@ -39,6 +39,18 @@ span {
   margin: 0 auto;
 }
 
+.btn{
+  padding: 2rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  background-color: yellowgreen;
+  text-align: center;
+  font-size: 2rem;
+}
+.btn:hover{
+  background-color: rgb(115, 153, 40);
+}
+
 /*Navegacion */
 .nav-bar {
   background-color: black;
@@ -62,7 +74,7 @@ span {
 }
 
 .enlaces a:hover {
-  background-color: aqua;
+  background-color: rgb(115, 153, 40);
 }
 
 /*background pizza*/
@@ -76,6 +88,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .back-img h2 {
@@ -85,6 +98,9 @@ span {
   border-radius: 0.5rem;
   background-color: white;
   margin: 0;
+}
+.back-img a{
+  width: 20%;
 }
 
 /*main*/
@@ -110,20 +126,71 @@ svg{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  margin: 2rem;
 }
 
 .card-pizza {
   text-align: center;
   font-size: 1.8rem;
 }
+/*Formulario*/
+.form{
+  display: flex;
+  justify-content: center;
+}
+
+.form svg{
+  max-width: 10rem;
+}
+
+.campos{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.campos a{
+  color: black;
+}
+.campos a:hover{
+  color: rgb(115, 153, 40);
+}
+
+.campo{
+  display: grid;
+  text-align: center;
+  margin: 2rem;
+  font-size: 2rem;
+}
+
+.campo input{
+  border-radius: .5rem;
+  border-style: groove;
+}
 
 /*Footer*/
 footer {
   background-color: black;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-footer{
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 0 2rem;
 }
+.info{
+  margin: 0;
+  padding: 0;
+}
+
+.social{
+  display: flex;
+  flex-direction: column;
+}
+
+.social p{
+  color: white;
+}
+
