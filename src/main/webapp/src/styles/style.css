@@ -30,6 +30,10 @@ h2 {
   text-align: center;
   font-size: 3rem;
 }
+h3 {
+  text-align: center;
+}
+
 span {
   font-weight: 700;
 }
@@ -39,7 +43,7 @@ span {
   margin: 0 auto;
 }
 
-.btn{
+.btn {
   padding: 2rem;
   margin-top: 1rem;
   border-radius: 1rem;
@@ -47,7 +51,7 @@ span {
   text-align: center;
   font-size: 2rem;
 }
-.btn:hover{
+.btn:hover {
   background-color: rgb(115, 153, 40);
 }
 
@@ -99,28 +103,36 @@ span {
   background-color: white;
   margin: 0;
 }
-.back-img a{
+.back-img a {
   width: 20%;
 }
-
 /*main*/
 
-.procedimientos-grid{
+.procedimientos-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   text-align: center;
 }
 
+@media (max-width: 768px) {
+  .procedimientos-grid {
+    display: flex;
+    flex-direction: column;
+  }
+}
 
-.svgs{
+.svgs {
   display: flex;
   justify-content: center;
 }
 
-svg{
-  max-width: 3rem;
+.procedimiento {
+  font-size: 2rem;
 }
 
+svg {
+  max-width: 3rem;
+}
 
 .grid-menu {
   display: grid;
@@ -129,41 +141,100 @@ svg{
   margin: 2rem;
 }
 
+@media (max-width: 768px) {
+  .grid-menu {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-menu {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  img {
+    max-width: 70%;
+  }
+}
+
 .card-pizza {
   text-align: center;
   font-size: 1.8rem;
+  background-color: rgb(231, 225, 225);
+  padding: 1.5rem;
+  border-radius: 1rem;
 }
+/*ADMINISTRADOR*/
+.bar-admin {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .bar-admin {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.trabajo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 2rem;
+}
+
+.trash{
+  color: red
+}
+.check{
+  color: green
+}
+
+table {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+}
+
+td,
+th {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+
+
 /*Formulario*/
-.form{
+.form {
   display: flex;
   justify-content: center;
 }
 
-.form svg{
+.form svg {
   max-width: 10rem;
 }
 
-.campos{
+.campos {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.campos a{
+.campos a {
   color: black;
 }
-.campos a:hover{
+.campos a:hover {
   color: rgb(115, 153, 40);
 }
 
-.campo{
+.campo {
   display: grid;
   text-align: center;
   margin: 2rem;
   font-size: 2rem;
 }
 
-.campo input{
-  border-radius: .5rem;
+.campo input {
+  border-radius: 0.5rem;
   border-style: groove;
 }
 
@@ -174,23 +245,22 @@ footer {
   padding: 0;
 }
 
-.nav-footer{
+.nav-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 2rem;
 }
-.info{
+.info {
   margin: 0;
   padding: 0;
 }
 
-.social{
+.social {
   display: flex;
   flex-direction: column;
 }
 
-.social p{
+.social p {
   color: white;
 }
-
