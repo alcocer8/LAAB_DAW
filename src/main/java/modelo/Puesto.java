@@ -1,5 +1,8 @@
 package modelo;
-public class Puesto {
+
+import java.io.Serializable;
+
+public class Puesto implements Serializable{
 
     private int idPuesto;
     private String descripcion;

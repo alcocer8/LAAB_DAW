@@ -1,6 +1,8 @@
 package modelo;
 
-public class Empleado {
+import java.io.Serializable;
+
+public class Empleado implements Serializable{
     private int id;
     private String usuario;
     private String password;

@@ -1,5 +1,8 @@
 package modelo;
-public class Estado {
+
+import java.io.Serializable;
+
+public class Estado implements Serializable{
     
     private int idEstado;
     private String descripcion;

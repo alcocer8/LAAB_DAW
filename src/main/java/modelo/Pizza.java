@@ -1,5 +1,8 @@
 package modelo;
-public class Pizza {
+
+import java.io.Serializable;
+
+public class Pizza implements Serializable{
 
     private int id;
     private String nombre;

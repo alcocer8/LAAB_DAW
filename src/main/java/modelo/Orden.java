@@ -1,5 +1,8 @@
 package modelo;
-public class Orden {
+
+import java.io.Serializable;
+
+public class Orden implements Serializable{
     
     private int idOrden;
     private int idCliente;
