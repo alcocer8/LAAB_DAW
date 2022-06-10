@@ -13,31 +13,28 @@ public class PizzaDAO {
     PreparedStatement ps;
     ResultSet rs;
 
-    public int createPizza(String nombre, String precio, String descripcion) {
+    public int createPizza(String nombre, String precio, String descripcion) throws SQLException {
         String sql = "INSERT INTO pizzas(nombre, precio, descripcion) VALUES(?,?,?)";
-        try {
-            cn = Conexion.conectar();
-            ps = cn.prepareStatement(sql);
-            ps.setString(1, nombre);
-            ps.setString(2, precio);
-            ps.setString(3, descripcion);
-            rs = ps.executeQuery();
-        } catch (SQLException e) {
-            return 0;
-        }
+        cn = Conexion.conectar();
+        ps = cn.prepareStatement(sql);
+        ps.setString(1, nombre);
+        ps.setDouble(2, Double.parseDouble(precio));
+        ps.setString(3, descripcion);
+        ps.executeUpdate();
+        Conexion.cerrar(cn);
+        Conexion.cerrar(ps);
         return 1;
     }
 
-    public ArrayList<Pizza> listaPizzas() {
+    public ArrayList<Pizza> allPizzas() throws SQLException {
         ArrayList<Pizza> pizzas = new ArrayList<>();
         String sql = "SELECT * FROM pizzas";
 
-        try {
-            cn = Conexion.conectar();
+        cn = Conexion.conectar();
         ps = cn.prepareStatement(sql);
         rs = ps.executeQuery();
 
-        while (rs.next()) {
+        while (rs.next()){
             Pizza p = new Pizza();
             p.setId(rs.getInt("idPizza"));
             p.setNombre(rs.getString("nombre"));
@@ -45,71 +42,56 @@ public class PizzaDAO {
             p.setDescripcion(rs.getString("descripcion"));
             pizzas.add(p);
         }
-
-        cn.close();
-        ps.close();
-        rs.close();
-
-        } catch (SQLException e) {
-            return null;
-        }
+        
+        Conexion.cerrar(cn, ps, rs);
         return pizzas;
     }
 
-    public Pizza buscaPizza(int id) throws SQLException {
-        String sql = "SELECT * FROM pizzas WHERE id=?";
-        Pizza p = new Pizza();
+    public Pizza pizza(int id) throws SQLException {
+        String sql = "SELECT * FROM pizzas WHERE idPizza=?";
+        Pizza p = null;
         cn = Conexion.conectar();
         ps = cn.prepareStatement(sql);
         ps.setInt(1, id);
         rs = ps.executeQuery();
         while (rs.next()) {
+            p = new Pizza();
             p.setId(rs.getInt("idPizza"));
             p.setNombre(rs.getString("nombre"));
             p.setPrecio(rs.getDouble("precio"));
             p.setDescripcion(rs.getString("descripcion"));
         }
 
-        cn.close();
-        ps.close();
-        rs.close();
+        Conexion.cerrar(cn, ps, rs);
 
         return p;
     }
 
-    public int deletePizza(int id) {
-        String sql = "DELETE FROM pizzas WHERE id=?";
-        try {
-            cn = Conexion.conectar();
-            ps = cn.prepareStatement(sql);
-            ps.setInt(1, id);
-            rs = ps.executeQuery();
+    public int updatePizza(int id, String nombre, String precio, String descripcion) throws SQLException {
+        String sql = "UPDATE pizzas SET nombre=?, precio=?, descripcion=? WHERE idPizza=?";
+        cn = Conexion.conectar();
+        ps = cn.prepareStatement(sql);
+        ps.setString(1, nombre);
+        ps.setDouble(2, Double.parseDouble(precio));
+        ps.setString(3, descripcion);
+        ps.setInt(4, id);
+        ps.executeUpdate();
 
-            cn.close();
-            ps.close();
-            rs.close();
-        } catch (SQLException e) {
-            return 0;
-        }
+        Conexion.cerrar(ps);
+        Conexion.cerrar(cn);
         return 1;
     }
 
-    public int updatePizza(int id, String nombre, String precio, String descripcion) {
-        String sql = "UPDATE pizzas SET nombre=?, precio=?, descripcion=? WHERE id=?";
-        try {
-            cn = Conexion.conectar();
-            ps = cn.prepareStatement(sql);
-            ps.setString(1, nombre);
-            ps.setString(2, precio);
-            ps.setInt(4, id);
-            rs = ps.executeQuery();
+    public int deletePizza(int id) throws SQLException {
+        String sql = "DELETE FROM pizzas WHERE id=?";
 
-            cn.close();
-            ps.close();
-            rs.close();
-        } catch (SQLException e) {
-            return 0;
-        }
+        cn = Conexion.conectar();
+        ps = cn.prepareStatement(sql);
+        ps.setInt(1, id);
+        rs = ps.executeQuery();
+
+        Conexion.cerrar(cn, ps, rs);
+
         return 1;
     }
 }

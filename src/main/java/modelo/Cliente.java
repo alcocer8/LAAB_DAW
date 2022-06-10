@@ -9,19 +9,23 @@ public class Cliente implements Serializable{
     private String nombre;
     private String apellido;
     private String telefono;
+    private int edad;
     private String correo;
+    private String password;
 
     public Cliente() {
     }
-    
-    public Cliente(int id, String nombre, String apellido, String telefono, String correo) {
+
+    public Cliente(int id, String nombre, String apellido, String telefono, int edad, String correo, String password) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
+        this.edad = edad;
         this.correo = correo;
+        this.password = password;
     }
-
+    
     public int getId() {
         return id;
     }
@@ -54,6 +58,14 @@ public class Cliente implements Serializable{
         this.telefono = telefono;
     }
 
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
     public String getCorreo() {
         return correo;
     }
@@ -62,10 +74,19 @@ public class Cliente implements Serializable{
         this.correo = correo;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono + ", correo=" + correo + '}';
+        return "Cliente{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono + ", edad=" + edad + ", correo=" + correo + ", password=" + password + '}';
     }
+
     
     
     

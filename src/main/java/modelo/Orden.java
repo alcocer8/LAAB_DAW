@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Orden implements Serializable{
     
     private int idOrden;
-    private int idCliente;
+    private int idUsuario;
     private int idPizza;
     private int cantidad;
     private String descripcion;
@@ -13,9 +13,9 @@ public class Orden implements Serializable{
     public Orden() {
     }
 
-    public Orden(int idOrden, int idCliente, int idPizza, int cantidad, String descripcion) {
+    public Orden(int idOrden, int idUsuario, int idPizza, int cantidad, String descripcion) {
         this.idOrden = idOrden;
-        this.idCliente = idCliente;
+        this.idUsuario = idUsuario;
         this.idPizza = idPizza;
         this.cantidad = cantidad;
         this.descripcion = descripcion;
@@ -29,12 +29,12 @@ public class Orden implements Serializable{
         this.idOrden = idOrden;
     }
 
-    public int getIdCliente() {
-        return idCliente;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public int getIdPizza() {
@@ -63,7 +63,7 @@ public class Orden implements Serializable{
 
     @Override
     public String toString() {
-        return "Orden{" + "idOrden=" + idOrden + ", idCliente=" + idCliente + ", idPizza=" + idPizza + ", cantidad=" + cantidad + ", descripcion=" + descripcion + '}';
+        return "Orden{" + "idOrden=" + idOrden + ", idUsuario=" + idUsuario + ", idPizza=" + idPizza + ", cantidad=" + cantidad + ", descripcion=" + descripcion + '}';
     }
     
     

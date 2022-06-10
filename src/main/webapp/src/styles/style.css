@@ -1,5 +1,7 @@
 :root {
   --fuentePrincipal: "Akshar", sans-serif;
+
+  --btnColor: yellowgreen;
 }
 
 html {
@@ -47,7 +49,7 @@ span {
   padding: 2rem;
   margin-top: 1rem;
   border-radius: 1rem;
-  background-color: yellowgreen;
+  background-color: var(--btnColor);
   text-align: center;
   font-size: 2rem;
 }
@@ -84,7 +86,7 @@ span {
 /*background pizza*/
 
 .back-img {
-  background-image: url(/img/1.jpg);
+  background-image: url(../img/1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -183,11 +185,11 @@ svg {
   margin: 2rem;
 }
 
-.trash{
-  color: red
+.trash {
+  color: red;
 }
-.check{
-  color: green
+.check {
+  color: green;
 }
 
 table {
@@ -201,8 +203,6 @@ th {
   font-size: 1.5rem;
   text-align: center;
 }
-
-
 
 /*Formulario*/
 .form {
@@ -219,6 +219,7 @@ th {
   flex-direction: column;
   align-items: center;
 }
+
 .campos a {
   color: black;
 }
@@ -236,6 +237,26 @@ th {
 .campo input {
   border-radius: 0.5rem;
   border-style: groove;
+  text-align: center;
+}
+
+/*UPDATE PIZZA*/
+.selecion-pizza {
+  border: black solid 2px;
+  border-radius: 0.5rem;
+  padding: 2.5rem;
+  margin: 2.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.selecion-pizza select {
+  padding: 1rem;
+  background: none;
+  border: black solid 2px;
+  border-radius: 0.5rem;
+  font-size: 2rem;
 }
 
 /*Footer*/

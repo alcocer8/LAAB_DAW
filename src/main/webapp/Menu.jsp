@@ -10,7 +10,7 @@
         <c:forEach var="pizza" items="${pizzas}">
             <div class="card-pizza">
                 <div class="img-pizza">
-                    <img src="/img/2.jpg" alt="pizza-img" srcset="">
+                    <img src="/img/2.jpg" alt="pizza-img">
                 </div>
                 <div class="info-pizza">
                     <h4>${pizza.nombre}</h4>

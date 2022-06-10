@@ -2,6 +2,8 @@ package datos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Conexion {
@@ -21,4 +23,23 @@ public class Conexion {
         }
         return conn;
     }
+    
+    public static void cerrar(Connection cn, PreparedStatement ps, ResultSet rs) throws SQLException{
+        cn.close();
+        ps.close();
+        rs.close();
+    }
+    
+    public static void cerrar(Connection cn) throws SQLException{
+        cn.close();
+    }
+    
+    public static void cerrar(PreparedStatement ps) throws SQLException{
+        ps.close();
+    }
+    
+    public static void cerrar(ResultSet rs) throws SQLException{
+        rs.close();
+    }
+            
 }

@@ -1,3 +1,5 @@
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,7 +21,20 @@
                 </a>
                 <div class="enlaces">
                     <a href="Controlador?accion=Menu">Menu</a>
-                    <a href="Controlador?accion=Ingresar">Ingresar</a>
+                    <c:if test="${clienteSesion == null && empleadoSesion == null}">
+                        <a href="Controlador?accion=Ingresar">Ingresar</a>
+                    </c:if>
+
+                    <c:if test="${clienteSesion != null}">
+                        <a href="Controlador?accion=Carrito">Carrito</a>
+                        <a href="Controlador?accion=SalirUsuario">Salir</a>
+                    </c:if>
+
+                    <c:if test="${empleadoSesion != null}">
+                        <a href="Controlador?accion=dashboard">Control</a>
+                        <a href="Controlador?accion=SalirUsuario">Salir</a>
+                    </c:if>
+
                 </div>
             </nav>
         </header>

@@ -18,6 +18,7 @@ public class Pizza implements Serializable{
         this.descripcion = descripcion;
         this.precio = precio;
     }
+    
 
     public int getId() {
         return id;
