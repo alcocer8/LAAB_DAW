@@ -5,7 +5,7 @@
     
     
     <c:if test="${valor != null}">
-        <p>${valor}</p>
+        <h2>${valor}</h2>
     </c:if>
     
     <h2>Ingresar Empleado</h2>

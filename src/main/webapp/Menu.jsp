@@ -10,7 +10,7 @@
         <c:forEach var="pizza" items="${pizzas}">
             <div class="card-pizza">
                 <div class="img-pizza">
-                    <img src="/img/2.jpg" alt="pizza-img">
+                    <img src="src/img/1.jpg" alt="pizza-img">
                 </div>
                     
                 <div class="info-pizza">
@@ -18,7 +18,9 @@
                     <p><span>Precio:</span> $${pizza.precio}</p>
                     <p><span>Descripcion: ${pizza.descripcion}</span></p>
                 </div>
+                <div class="btn-menu">
                     <a class="btn" href="ControladorCliente?accion=AgregarCarrito&idPizza=${pizza.id}" >Agregar Carrito</a>
+                </div>
             </div>
         </c:forEach>
     </div>

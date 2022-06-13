@@ -50,7 +50,7 @@
                                 <p><span>Email:</span> ${orden.email}</p>
                             </td>
                             <td>
-                                <a class="trash" href="Controlador?accion=EliminarOrden&idOrden=${orden.idOrden}&idCliente=${orden.idCliente}&idPizza=${orden.idPizza}">
+                                <a class="trash" href="ControladorEmpleado?accion=EliminarOrden&idOrden=${orden.idOrden}&idCliente=${orden.idCliente}&idPizza=${orden.idPizza}">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                          viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -58,7 +58,7 @@
                                     </svg>
                                 </a>
 
-                                <a class="check" href="Controlador?accion=ActualizarOrden&idOrden=${orden.idOrden}&idCliente=${orden.idCliente}&idPizza=${orden.idPizza}&idEstado=2">
+                                <a class="check" href="ControladorEmpleado?accion=ActualizarOrden&idOrden=${orden.idOrden}&idCliente=${orden.idCliente}&idPizza=${orden.idPizza}&idEstado=2">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                     </svg>
@@ -97,7 +97,7 @@
                                 <p><span>Email:</span> ${orden.email}</p>
                             </td>
                             <td>
-                                <a class="trash" href="Controlador?accion=EliminarOrden&idOrden=${orden.idOrden}&idCliente=${orden.idCliente}&idPizza=${orden.idPizza}">
+                                <a class="trash" href="ControladorEmpleado?accion=EliminarOrden&idOrden=${orden.idOrden}&idCliente=${orden.idCliente}&idPizza=${orden.idPizza}">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                          viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -105,7 +105,7 @@
                                     </svg>
                                 </a>
 
-                                <a class="check" href="Controlador?accion=ActualizarOrden&idOrden=${orden.idOrden}&idCliente=${orden.idCliente}&idPizza=${orden.idPizza}&idEstado=3">
+                                <a class="check" href="ControladorEmpleado?accion=ActualizarOrden&idOrden=${orden.idOrden}&idCliente=${orden.idCliente}&idPizza=${orden.idPizza}&idEstado=3">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>

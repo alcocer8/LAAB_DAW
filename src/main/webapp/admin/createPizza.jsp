@@ -1,12 +1,11 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../WEB-INF/templates/header.jsp" />
-
 
 
 <main class="contenedor">
 
-
     <div>
-        <c:if test="${Empleado == null}" >
+        <c:if test="${Empleado == null}">
             <%response.sendRedirect("index.jsp");%>
         </c:if>
 
@@ -16,8 +15,6 @@
     </div>
 
     <form action="ControladorEmpleado" method="POST">
-
-
 
         <div class="campos">
 

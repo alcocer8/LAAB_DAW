@@ -30,8 +30,9 @@ public class ControladorEmpleado extends HttpServlet {
             OrdenDao oDao = new OrdenDao();
             OrdenClientesDao ocDao = new OrdenClientesDao();
             HttpSession session = req.getSession();
-            req.setAttribute("Empleado", session.getAttribute("empleadoSesion"));
+            
             session.setAttribute("session", session);
+            
             ArrayList<Pizza> pizzas = null;
             Double total = 0.0;
 
@@ -40,22 +41,27 @@ public class ControladorEmpleado extends HttpServlet {
                     req.setAttribute("Nuevo", ocDao.EstadoOrdenCliente(1));
                     req.setAttribute("Preparado", ocDao.EstadoOrdenCliente(2));
                     
+                    req.setAttribute("Empleado", session.getAttribute("empleadoSesion"));
                     req.getRequestDispatcher("admin/dashboard.jsp").forward(req, resp);
                     break;
                 case "AgregarPizza":
+                    req.setAttribute("Empleado", session.getAttribute("empleadoSesion"));
                     req.getRequestDispatcher("admin/createPizza.jsp").forward(req, resp);
                     break;
                 case "CrearEmpleado":
+                    
+                    req.setAttribute("Empleado", session.getAttribute("empleadoSesion"));
                     req.setAttribute("lastId", eDAO.lastEmpleado());
                     req.getRequestDispatcher("admin/createEmpleado.jsp").forward(req, resp);
                     break;
                 case "ActualizarProductos":
+                    req.setAttribute("Empleado", session.getAttribute("empleadoSesion"));
                     pizzas = pDao.allPizzas();
                     req.setAttribute("pizzas", pizzas);
                     req.getRequestDispatcher("admin/updatePizza.jsp").forward(req, resp);
                     break;
                 case "ActualizarOrden":
-
+                    
                     oDao.updateOrden(req.getParameter("idOrden"), Integer.parseInt(req.getParameter("idCliente")), Integer.parseInt(req.getParameter("idPizza")), Integer.parseInt(req.getParameter("idEstado")));
 
                     req.setAttribute("Nuevo", ocDao.EstadoOrdenCliente(1));
@@ -95,6 +101,7 @@ public class ControladorEmpleado extends HttpServlet {
             Double total = 0.0;
             int i = 0;
 
+            req.setAttribute("Empleado", session.getAttribute("empleadoSesion"));
             switch (accion) {
                 case "Seleccionar Pizza":
                     Pizza p = pDao.pizza(Integer.parseInt(req.getParameter("pizza")));

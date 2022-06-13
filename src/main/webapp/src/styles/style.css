@@ -7,6 +7,7 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+  height: 100%;
 }
 
 *,
@@ -16,7 +17,10 @@ html {
 }
 
 body {
-  font-family: var(--fuentePrincipal);
+  font-family: var(--fuentePrincipal); 
+  display: flex;
+  flex-direction: column;
+  min-height: 100%
 }
 
 img {
@@ -143,6 +147,11 @@ svg {
   margin: 2rem;
 }
 
+.btn-menu{
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
 @media (max-width: 768px) {
   .grid-menu {
     grid-template-columns: repeat(2, 1fr);
@@ -264,6 +273,7 @@ footer {
   background-color: black;
   margin: 0;
   padding: 0;
+  margin-top: auto;
 }
 
 .nav-footer {
