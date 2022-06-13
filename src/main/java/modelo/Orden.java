@@ -4,37 +4,38 @@ import java.io.Serializable;
 
 public class Orden implements Serializable{
     
-    private int idOrden;
-    private int idUsuario;
+    private String idOrden;
+    private int idCliente;
     private int idPizza;
     private int cantidad;
-    private String descripcion;
+    private int idEstado;
+    
 
     public Orden() {
     }
 
-    public Orden(int idOrden, int idUsuario, int idPizza, int cantidad, String descripcion) {
+    public Orden(String idOrden, int idCliente, int idPizza, int cantidad, int idEstado) {
         this.idOrden = idOrden;
-        this.idUsuario = idUsuario;
+        this.idCliente = idCliente;
         this.idPizza = idPizza;
         this.cantidad = cantidad;
-        this.descripcion = descripcion;
+        this.idEstado = idEstado;
     }
 
-    public int getIdOrden() {
+    public String getIdOrden() {
         return idOrden;
     }
 
-    public void setIdOrden(int idOrden) {
+    public void setIdOrden(String idOrden) {
         this.idOrden = idOrden;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public int getIdPizza() {
@@ -53,19 +54,17 @@ public class Orden implements Serializable{
         this.cantidad = cantidad;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public int getIdEstado() {
+        return idEstado;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setIdEstado(int idEstado) {
+        this.idEstado = idEstado;
     }
 
     @Override
     public String toString() {
-        return "Orden{" + "idOrden=" + idOrden + ", idUsuario=" + idUsuario + ", idPizza=" + idPizza + ", cantidad=" + cantidad + ", descripcion=" + descripcion + '}';
+        return "Orden{" + "idOrden=" + idOrden + ", idCliente=" + idCliente + ", idPizza=" + idPizza + ", cantidad=" + cantidad + ", idEstado=" + idEstado + '}';
     }
-    
-    
-    
+
 }
