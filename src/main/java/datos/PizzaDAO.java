@@ -83,14 +83,15 @@ public class PizzaDAO {
     }
 
     public int deletePizza(int id) throws SQLException {
-        String sql = "DELETE FROM pizzas WHERE id=?";
+        String sql = "DELETE FROM pizzas WHERE idPizza=?";
 
         cn = Conexion.conectar();
         ps = cn.prepareStatement(sql);
         ps.setInt(1, id);
-        rs = ps.executeQuery();
+        ps.executeUpdate();
 
-        Conexion.cerrar(cn, ps, rs);
+        Conexion.cerrar(ps);
+        Conexion.cerrar(cn);
 
         return 1;
     }

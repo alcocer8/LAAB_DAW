@@ -54,6 +54,12 @@ public class ControladorEmpleado extends HttpServlet {
                     req.setAttribute("lastId", eDAO.lastEmpleado());
                     req.getRequestDispatcher("admin/createEmpleado.jsp").forward(req, resp);
                     break;
+                case "ActualizarEmpleado":
+                    req.setAttribute("Empleado", session.getAttribute("empleadoSesion"));
+                    
+                    req.setAttribute("empleados", eDAO.allEmpleados());
+                    req.getRequestDispatcher("admin/updateEmpleado.jsp").forward(req, resp);
+                    break;
                 case "ActualizarProductos":
                     req.setAttribute("Empleado", session.getAttribute("empleadoSesion"));
                     pizzas = pDao.allPizzas();
@@ -114,6 +120,55 @@ public class ControladorEmpleado extends HttpServlet {
                     req.setAttribute("pizzas", pDao.allPizzas());
                     req.getRequestDispatcher("admin/updatePizza.jsp").forward(req, resp);
                     break;
+                case "Eliminar Pizza":
+                    pDao.deletePizza(Integer.parseInt(req.getParameter("id")));
+                    req.setAttribute("valor", "Pizza Eliminada");
+                    req.setAttribute("pizzas", pDao.allPizzas());
+                    req.getRequestDispatcher("admin/updatePizza.jsp").forward(req, resp);
+                    break;
+                case "Seleccionar Empleado":
+                    req.setAttribute("EmpleadoE", edao.empleado(Integer.parseInt(req.getParameter("empleado"))));
+                    req.getRequestDispatcher("admin/updateEmpleado.jsp").forward(req, resp);
+                    break;
+                case "Actualizar Empleado":
+                    i = 0;
+                    
+                    if(req.getParameter("nombre").isEmpty()){
+                        i++;
+                    }
+                    
+                    if(req.getParameter("apellido").isEmpty()){
+                        i++;
+                    }
+                    
+                    if(req.getParameter("usuario").isEmpty()){
+                        i++;
+                    }
+                    
+                    if(req.getParameter("password").isEmpty()){
+                        i++;
+                    }
+                    
+                    if(req.getParameter("puesto") == null){
+                        i++;
+                    }
+                    if(i == 0){
+                        edao.updateEmpleado(Integer.parseInt(req.getParameter("id")) ,req.getParameter("nombre"), req.getParameter("apellido"), req.getParameter("usuario"), req.getParameter("password"), Integer.parseInt(req.getParameter("puesto")));
+                        req.setAttribute("valor", "Empleado Actualizado");
+                    }else{
+                        req.setAttribute("valor", "Todos los campos son obligatorios");
+                    }
+                    
+                    req.setAttribute("empleados", edao.allEmpleados());
+                    req.getRequestDispatcher("admin/updateEmpleado.jsp").forward(req, resp);
+                    break;
+                case "Eliminar Empleado":
+                    edao.deleteEmpleado(Integer.parseInt(req.getParameter("id")));
+                    req.setAttribute("valor", "Empleado Eliminada");
+                    req.setAttribute("empleados", edao.allEmpleados());
+                    req.getRequestDispatcher("admin/updateEmpleado.jsp").forward(req, resp);
+                    break;
+                
                 case "Crear Pizza":
                     if (req.getParameter("pizza").isEmpty()) {
                         i++;

@@ -48,6 +48,7 @@
                 </div>
 
                 <input type="submit" value="Actualizar Pizza" name="accion" class="btn">
+                <input type="submit" value="Eliminar Pizza" name="accion" class="btn">
             </div>
 
         </form>

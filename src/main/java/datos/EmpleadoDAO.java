@@ -60,7 +60,7 @@ public class EmpleadoDAO {
     } 
     
     public ArrayList<Empleado> allEmpleados() throws SQLException{
-        ArrayList<Empleado> em = null;
+        ArrayList<Empleado> em = new ArrayList<Empleado>();
         String sql = "SELECT * FROM empleados";
         
         cn = Conexion.conectar();
@@ -85,14 +85,14 @@ public class EmpleadoDAO {
     }
     
     public Empleado empleado(int idEmpleado) throws SQLException{
-        Empleado e = null;
+        Empleado e = e = new Empleado();
         String sql = "SELECT * FROM empleados WHERE idEmpleado = ?";
         
         cn = Conexion.conectar();
         ps = cn.prepareStatement(sql);
+        ps.setInt(1, idEmpleado);
         rs = ps.executeQuery();
         while(rs.next()){
-            e = new Empleado();
             e.setId(rs.getInt("idEmpleado"));
             e.setNombre(rs.getString("nombre"));
             e.setApellido(rs.getString("apellido"));
@@ -108,8 +108,8 @@ public class EmpleadoDAO {
         return e;
     }
     
-    public int updateEmpleado(int id, String nombre, String apellido,String usuario, String password, int puesto) throws SQLException{
-        String sql = "UPDATE empleados SET nombre = ?, apellido = ?, usuario = ?, puesto = ? WHERE id=?";
+    public int updateEmpleado(int id, String nombre, String apellido, String usuario, String password, int puesto) throws SQLException{
+        String sql = "UPDATE empleados SET nombre = ?, apellido = ?, usuario = ?, password=?, puesto = ? WHERE idEmpleado=?";
         
         cn = Conexion.conectar();
         ps = cn.prepareStatement(sql);
@@ -117,14 +117,12 @@ public class EmpleadoDAO {
         ps.setString(2, apellido);
         ps.setString(3, usuario);
         ps.setString(4, password);
-        ps.setInt(6, puesto);
+        ps.setInt(5, puesto);
         ps.setInt(6, id);
-        rs = ps.executeQuery();
+        ps.executeUpdate();
         
-        Conexion.cerrar(cn);
         Conexion.cerrar(ps);
-        Conexion.cerrar(rs);
-        
+        Conexion.cerrar(cn);
         return 1;
     }
     
@@ -135,12 +133,10 @@ public class EmpleadoDAO {
         cn = Conexion.conectar();
         ps = cn.prepareStatement(sql);
         ps.setInt(1, idEmpleado);
-        rs = ps.executeQuery();
+        ps.executeUpdate();
         
-        Conexion.cerrar(cn);
         Conexion.cerrar(ps);
-        Conexion.cerrar(rs);
-        
+        Conexion.cerrar(cn);
         return 1;
     }
     

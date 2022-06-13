@@ -13,6 +13,7 @@
             <a href="ControladorEmpleado?accion=AgregarPizza" class="btn">Agregar Producto</a>
             <a href="ControladorEmpleado?accion=ActualizarProductos" class="btn">Actualizar Pizzas</a>
             <a href="ControladorEmpleado?accion=CrearEmpleado" class="btn">Crear Empleado</a>
+            <a href="ControladorEmpleado?accion=ActualizarEmpleado" class="btn">Actualizar Empleado</a>
         </nav>
     </c:if>
 
