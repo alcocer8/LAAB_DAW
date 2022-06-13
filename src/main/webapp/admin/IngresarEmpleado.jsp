@@ -2,6 +2,8 @@
 <jsp:include page="/WEB-INF/templates/header.jsp"/>
 
 <main class="contenedor">
+    
+    
     <c:if test="${valor != null}">
         <p>${valor}</p>
     </c:if>

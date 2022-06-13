@@ -64,6 +64,8 @@ public class Controlador extends HttpServlet {
                     
                     req.setAttribute("Nuevo", ocDao.EstadoOrdenCliente(1));
                     req.setAttribute("Preparado", ocDao.EstadoOrdenCliente(2));
+                    req.setAttribute("Empleado", session.getAttribute("empleadoSesion"));
+                    
                     
                     req.getRequestDispatcher("admin/dashboard.jsp").forward(req, resp);
                     break;    
@@ -75,9 +77,11 @@ public class Controlador extends HttpServlet {
                     req.getRequestDispatcher("admin/createEmpleado.jsp").forward(req, resp);
                     break;
                 case "ActualizarProductos":
+                    
                     pizzas = pDao.allPizzas();
                     req.setAttribute("pizzas", pizzas);
                     req.getRequestDispatcher("admin/updatePizza.jsp").forward(req, resp);
+                    break;
                 case "Carrito":
                     ArrayList<Pizza> carrito = null;
                     
@@ -96,6 +100,24 @@ public class Controlador extends HttpServlet {
                     req.setAttribute("Total", total);
                     
                     req.getRequestDispatcher("Carrito.jsp").forward(req, resp);
+                    break;
+                case "ActualizarOrden":
+                    
+                    oDao.updateOrden(req.getParameter("idOrden"), Integer.parseInt(req.getParameter("idCliente")), Integer.parseInt(req.getParameter("idPizza")), Integer.parseInt(req.getParameter("idEstado")));
+                    
+                    req.setAttribute("Nuevo", ocDao.EstadoOrdenCliente(1));
+                    req.setAttribute("Preparado", ocDao.EstadoOrdenCliente(2));
+                    req.setAttribute("Empleado", session.getAttribute("empleadoSesion"));
+                    req.getRequestDispatcher("admin/dashboard.jsp").forward(req, resp);
+                    break;
+                case "EliminarOrden":
+                    
+                    oDao.deleteOrden(req.getParameter("idOrden"), Integer.parseInt(req.getParameter("idCliente")), Integer.parseInt(req.getParameter("idPizza")));
+                    
+                    req.setAttribute("Nuevo", ocDao.EstadoOrdenCliente(1));
+                    req.setAttribute("Preparado", ocDao.EstadoOrdenCliente(2));
+                    req.setAttribute("Empleado", session.getAttribute("empleadoSesion"));
+                    req.getRequestDispatcher("admin/dashboard.jsp").forward(req, resp);
                     break;
                 default:
                     break;
@@ -130,6 +152,7 @@ public class Controlador extends HttpServlet {
                     
                     if (c != null) {
                         session.setAttribute("clienteSesion", c);
+                        req.setAttribute("pizzas", pDao.allPizzas());
                         req.getRequestDispatcher("Menu.jsp").forward(req, resp);
 
                     } else {
@@ -143,9 +166,10 @@ public class Controlador extends HttpServlet {
                     if (e != null) {
                         
                         req.setAttribute("Nuevo", ocDao.EstadoOrdenCliente(1));
-                        //req.setAttribute("Preparado", ocDao.EstadoOrdenCliente(2));
+                        req.setAttribute("Preparado", ocDao.EstadoOrdenCliente(2));
                         
                         session.setAttribute("empleadoSesion", e);
+                        req.setAttribute("Empleado", e);
                         req.getRequestDispatcher("admin/dashboard.jsp").forward(req, resp);
 
                     } else {

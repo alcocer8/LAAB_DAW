@@ -28,7 +28,7 @@ public class OrdenClientesDao {
         String sql = "SELECT * FROM ordenes \n"
                 + "INNER JOIN clientes ON (ordenes.idCliente = clientes.idCliente)\n"
                 + "INNER JOIN pizzas ON (ordenes.idPizza = pizzas.idPizza)\n"
-                + "INNER JOIN estados ON (ordenes.idCliente = estados.idEstado);";
+                + "INNER JOIN estados ON (ordenes.idEstado= estados.idEstado);";
         ArrayList<OrdenCliente> ordenes = new ArrayList<OrdenCliente>();
 
         cn = Conexion.conectar();
@@ -58,7 +58,7 @@ public class OrdenClientesDao {
         String sql = "SELECT * FROM ordenes \n"
                 + "INNER JOIN clientes ON (ordenes.idCliente = clientes.idCliente)\n"
                 + "INNER JOIN pizzas ON (ordenes.idPizza = pizzas.idPizza)\n"
-                + "INNER JOIN estados ON (ordenes.idCliente = estados.idEstado) \n"
+                + "INNER JOIN estados ON (ordenes.idEstado= estados.idEstado) \n"
                 + "WHERE estados.idEstado = ?";
         ArrayList<OrdenCliente> ordenes = new ArrayList<OrdenCliente>();
 
@@ -73,6 +73,7 @@ public class OrdenClientesDao {
             oc.setIdCliente(rs.getInt("idCliente"));
             oc.setIdPizza(rs.getInt("idPizza"));
             oc.setCantidad(rs.getInt("cantidad"));
+            oc.setIdEstado(rs.getInt("idEstado"));
             oc.setNombrePizza(rs.getString(14));
             oc.setEstado(rs.getString(18));
             oc.setNombreCliente(rs.getString(7));

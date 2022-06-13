@@ -15,7 +15,7 @@
                 <h1>Lencho Pizza</h1>
             </a>
             <c:if test="${Empleado != null}">
-                <a href="Controlador?accion=Empleado">ï¿½Empleado?</a>
+                <a href="Controlador?accion=Empleado">¿Empleado?</a>
             </c:if>
         </div>
     </nav>

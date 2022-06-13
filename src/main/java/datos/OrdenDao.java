@@ -87,31 +87,35 @@ public class OrdenDao {
         return o;
     }
     
-    public int updateOrden(int idOrden, int idCliente, int idPizza, int estado) throws SQLException {
-        String sql = "UPDATE ordenes SET estado = ? WHERE idOrden= ? AND idCliente = ? AND idPizza = ?";
+    public int updateOrden(String idOrden, int idCliente, int idPizza, int estado) throws SQLException {
+        String sql = "UPDATE ordenes SET idEstado = ? WHERE idOrden= ? AND idCliente = ? AND idPizza = ?";
 
         cn = Conexion.conectar();
         ps = cn.prepareStatement(sql);
         ps.setInt(1, estado);
-        ps.setInt(1, idOrden);
-        ps.setInt(2, idCliente);
-        ps.setInt(3, idPizza);
+        ps.setString(2, idOrden);
+        ps.setInt(3, idCliente);
+        ps.setInt(4, idPizza);
         
-        rs = ps.executeQuery();
+        ps.executeUpdate();
 
-        Conexion.cerrar(cn, ps, rs);
-
+        Conexion.cerrar(ps);
+        Conexion.cerrar(cn);
         return 1;
     }
     
-    public int deleteOrden(int idOrden) throws SQLException {
-        String sql = "DELETE FROM ordenes WHERE idOrden = ?";
+    public int deleteOrden(String idOrden, int idCliente, int idPizza) throws SQLException {
+        String sql = "DELETE FROM ordenes WHERE idOrden= ? AND idCliente = ? AND idPizza = ?";
         cn = Conexion.conectar();
         ps = cn.prepareStatement(sql);
-        ps.setInt(1, idOrden);
-        rs = ps.executeQuery();
+        ps.setString(1, idOrden);
+        ps.setInt(2, idCliente);
+        ps.setInt(3, idPizza);
+        
+        ps.executeUpdate();
 
-        Conexion.cerrar(cn, ps, rs);
+        Conexion.cerrar(ps);
+        Conexion.cerrar(cn);
 
         return 1;
     }
