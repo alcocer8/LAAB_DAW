@@ -22,17 +22,17 @@
                 <div class="enlaces">
                     <a href="Controlador?accion=Menu">Menu</a>
                     <c:if test="${clienteSesion == null && empleadoSesion == null}">
-                        <a href="Controlador?accion=Ingresar">Ingresar</a>
+                        <a href="ControladorUsuarios?accion=Ingresar">Ingresar</a>
                     </c:if>
 
                     <c:if test="${clienteSesion != null}">
-                        <a href="Controlador?accion=Carrito">Carrito</a>
-                        <a href="Controlador?accion=SalirUsuario">Salir</a>
+                        <a href="ControladorCliente?accion=Carrito">Carrito</a>
+                        <a href="ControladorUsuarios?accion=SalirUsuario">Salir</a>
                     </c:if>
 
                     <c:if test="${empleadoSesion != null}">
-                        <a href="Controlador?accion=dashboard">Control</a>
-                        <a href="Controlador?accion=SalirUsuario">Salir</a>
+                        <a href="ControladorEmpleado?accion=dashboard">Control</a>
+                        <a href="ControladorUsuarios?accion=SalirUsuario">Salir</a>
                     </c:if>
 
                 </div>

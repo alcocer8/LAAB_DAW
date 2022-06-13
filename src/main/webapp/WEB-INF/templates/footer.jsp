@@ -11,11 +11,11 @@
 
         </div>
         <div class="info">
-            <a href="index.html">
+            <a href="index.jsp">
                 <h1>Lencho Pizza</h1>
             </a>
             <c:if test="${Empleado != null}">
-                <a href="Controlador?accion=Empleado">¿Empleado?</a>
+                <a href="ControladorUsuarios?accion=Empleado">¿Empleado?</a>
             </c:if>
         </div>
     </nav>

@@ -1,6 +1,24 @@
 <jsp:include page="../WEB-INF/templates/header.jsp" />
+
+
+
 <main class="contenedor">
-    <form action="Controlador" method="POST">
+
+
+    <div>
+        <c:if test="${Empleado == null}" >
+            <%response.sendRedirect("index.jsp");%>
+        </c:if>
+
+        <c:if  test="${valor != null}" >
+            <h2>${valor}</h2>
+        </c:if>
+    </div>
+
+    <form action="ControladorEmpleado" method="POST">
+
+
+
         <div class="campos">
 
             <div class="campo">

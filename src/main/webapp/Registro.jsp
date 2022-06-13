@@ -1,10 +1,15 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/templates/header.jsp"/>
 
 <main class="contenedor">
+    <c:if test="${valor != null}" >
+        <h2>${valor}</h2>
+    </c:if>
+    
     <h2>Registro</h2>
 
     <div class="form">
-        <form action="Controlador" method="POST" class="login">
+        <form action="ControladorUsuarios" method="POST" class="login">
             <div class="campos">
 
                 <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -9,7 +9,7 @@
     <h2>Ingresar</h2>
 
     <div class="form">
-        <form action="Controlador" method="POST" class="login">
+        <form action="ControladorUsuarios" method="POST" class="login">
             <div class="campos">
 
                 <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +27,7 @@
                     <label for="pass">Contraseña</label>
                     <input type="password" id="pass" name="pass">
                 </div>
-                <a href="Controlador?accion=Registro" class="registro">¿Eres Nuevo Usuario? Registrate</a>
+                <a href="ControladorUsuarios?accion=Registro" class="registro">¿Eres Nuevo Usuario? Registrate</a>
 
                 <input type="submit" value="Ingresar Cliente" name="accion" class="btn">
             </div>

@@ -11,7 +11,7 @@
     <h2>Ingresar Empleado</h2>
 
     <div class="form">
-        <form action="Controlador" method="POST" class="login">
+        <form action="ControladorUsuarios" method="POST" class="login">
             <div class="campos">
 
                 <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">

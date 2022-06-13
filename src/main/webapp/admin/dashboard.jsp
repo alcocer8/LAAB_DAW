@@ -1,12 +1,18 @@
+<%@page import="modelo.Empleado"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/templates/header.jsp"/>
 
 <main class="contenedor">
+
+    <c:if test="${Empleado == null}" >
+        <%response.sendRedirect("index.jsp");%>
+    </c:if>
+
     <c:if test="${Empleado.puesto == 1}">
         <nav class="bar-admin">
-            <a href="Controlador?accion=AgregarPizza" class="btn">Agregar Producto</a>
-            <a href="Controlador?accion=ActualizarProductos" class="btn">Actualizar Pizzas</a>
-            <a href="Controlador?accion=CrearEmpleado" class="btn">Crear Empleado</a>
+            <a href="ControladorEmpleado?accion=AgregarPizza" class="btn">Agregar Producto</a>
+            <a href="ControladorEmpleado?accion=ActualizarProductos" class="btn">Actualizar Pizzas</a>
+            <a href="ControladorEmpleado?accion=CrearEmpleado" class="btn">Crear Empleado</a>
         </nav>
     </c:if>
 
