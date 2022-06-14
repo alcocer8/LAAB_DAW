@@ -27,12 +27,18 @@ public class ControladorUsuarios extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //Recuperamos el session
         HttpSession session = req.getSession();
+        
+        //Mandamos la session como parametro
         session.setAttribute("session", session);
+        
+        //Recuperamos la accion
         String accion = req.getParameter("accion");
 
         switch (accion) {
             case "Ingresar":
+                //Acceso para ingreso empleado
                 req.setAttribute("Empleado", "Empleado");
                 req.getRequestDispatcher("Ingresar.jsp").forward(req, resp);
                 break;
@@ -43,6 +49,8 @@ public class ControladorUsuarios extends HttpServlet {
                     req.getRequestDispatcher("admin/IngresarEmpleado.jsp").forward(req, resp);
                     break;
             case "SalirUsuario":
+                
+                //Eliminamos todos los atributos dentro de session actual
                 session.removeAttribute("clienteSesion");
                 session.removeAttribute("empleadoSesion");
                 req.getRequestDispatcher("index.jsp").forward(req, resp);
@@ -53,17 +61,24 @@ public class ControladorUsuarios extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
+            //Recuperamos la session actual
             HttpSession session = req.getSession();
             session.setAttribute("session", session);
+            //Recuperamos la accion
             String accion = req.getParameter("accion");
+            
+            //Variables
             ClienteDao cDao = new ClienteDao();
             EmpleadoDAO edao = new EmpleadoDAO();
             PizzaDAO pDao = new PizzaDAO();
+            
             OrdenClientesDao ocDao = new OrdenClientesDao();
-
+            int i = 0;
             switch (accion) {
                 case "Registro Cliente":
-                    int i = 0;
+                    
+                    i = 0;
+                    //Validamos que ningun campo este vacio
                     if (req.getParameter("nombre").isEmpty()) {
                         i++;
                     }
@@ -88,18 +103,37 @@ public class ControladorUsuarios extends HttpServlet {
                         i++;
                     }
 
+                    //Si ningun campo esta vacio
                     if(i == 0){
+                        //Creamos el cliente
                         cDao.createCliente(req.getParameter("nombre"), req.getParameter("apellido"), req.getParameter("telefono"), Integer.parseInt(req.getParameter("edad")), req.getParameter("email"), req.getParameter("pass"));
                         req.setAttribute("valor", "Ya fuiste registrado, Ingresa con tu Email y Password");
                         req.getRequestDispatcher("Ingresar.jsp").forward(req, resp);
                     }else{
+                        //Retornamos un aviso de que no se pudo
                         req.setAttribute("valor", "Todos los campos son obligatorios");
                         req.getRequestDispatcher("Registro.jsp").forward(req, resp);
                     }
                     
                     break;
                 case "Ingresar Cliente":
-                    Cliente c = cDao.ingresarCliente(req.getParameter("email"), req.getParameter("pass"));
+                    i = 0;
+                    
+                    if(req.getParameter("email").isEmpty()){
+                        i++;
+                    }
+                    
+                    if(req.getParameter("pass").isEmpty()){
+                        i++;
+                    }
+                    Cliente c = null;
+                    if(i == 0){
+                        c = cDao.ingresarCliente(req.getParameter("email"), req.getParameter("pass"));
+                    }else{
+                        req.setAttribute("valor", "Todos los campos son obligatorios");
+                        req.getRequestDispatcher("Ingresar.jsp").forward(req, resp);
+                    }
+                    
 
                     if (c != null) {
                         session.setAttribute("clienteSesion", c);
@@ -112,7 +146,24 @@ public class ControladorUsuarios extends HttpServlet {
                     }
                     break;
                 case "Ingresar Empleado":
-                    Empleado e = edao.validaEmpleado(req.getParameter("usuario"), req.getParameter("pass"));
+                     i = 0;
+                    
+                    if(req.getParameter("email").isEmpty()){
+                        i++;
+                    }
+                    
+                    if(req.getParameter("pass").isEmpty()){
+                        i++;
+                    }
+                    Empleado e = null;
+                    if(i == 0){
+                        e = edao.validaEmpleado(req.getParameter("usuario"), req.getParameter("pass"));
+                    }else{
+                        req.setAttribute("valor", "Todos los campos son obligatorios");
+                        req.getRequestDispatcher("admin/IngresarEmpleado.jsp").forward(req, resp);
+                    }
+                    
+                    
 
                     if (e != null) {
 
